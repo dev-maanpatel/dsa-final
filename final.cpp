@@ -31,12 +31,12 @@ public:
 
     void deleteAtAny(int pos) {
         if (count == 0) {
-            cout << "\nList is Empty!" << endl;
+            cout << "\nError: The list is empty!" << endl;
             return;
         }
 
         if (pos < 0 || pos >= count) {
-            cout << "\nInvalid Position!" << endl;
+            cout << "\nError: Invalid position!" << endl;
             return;
         }
 
@@ -59,7 +59,7 @@ public:
 
     void update(int pos, int val) {
         if (count == 0 || pos < 0 || pos >= count) {
-            cout << "Invalid position or list is empty!" << endl;
+            cout << "Error: Invalid position or the list is empty!" << endl;
             return;
         }
         Node* temp = head;
@@ -71,7 +71,7 @@ public:
 
     void display() {
         if (count == 0) {
-            cout << "\nList is Empty!" << endl;
+            cout << "\nError: The list is empty!" << endl;
             return;
         }
         Node* temp = head;
@@ -99,15 +99,15 @@ void displayVector(const vector<int>& arr);
 int binarySearch(const vector<int>& arr, int low, int high, int key);
 
 int main() {
-    int choice, subChoice;
+    int choice, ch;
     LinkedList list;
 
     do {
         cout << "-------Main Menu--------" << endl;
-        cout << "1. Linked List" << endl;
-        cout << "2. Merge Sort" << endl;
-        cout << "3. Binary Search" << endl;
-        cout << "4. Exit" << endl;
+        cout << " Enter 1 for Linked List" << endl;
+        cout << " Enter 2 for Merge Sort" << endl;
+        cout << " Enter 3 for Binary Search" << endl;
+        cout << " Enter 4 for Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
 
@@ -116,19 +116,18 @@ int main() {
             case 1: {
                 do {
                     cout << "\n-------Linked List Menu-----" <<endl;
-                    cout << "1. Add at Beginning" << endl;
-                    cout << "2. Delete at Postion" << endl;
-                    cout << "3. Update at Position" << endl;
-                    cout << "4. Display List" << endl;
-                    cout << "5. Exit from LinkedList Menu." << endl;
+                    cout << " Enter 1 for Add at Beginning" << endl;
+                    cout << " Enter 2 for Delete at Position" << endl;
+                    cout << " Enter 3 for Update at Position" << endl;
+                    cout << " Enter 4 for Display List" << endl;
+                    cout << " Enter 5 for Exit LinkedList Menu." << endl;
                     cout << "Enter your choice: ";
-                    cin >> subChoice;
+                    cin >> ch;
 
-
-                    switch (subChoice) {
+                    switch (ch) {
                         case 1: {
                             int data;
-                            cout << "Enter value to insert: ";
+                            cout << "Enter value you want to insert: ";
                             cin >> data;
                             list.addAtBegin(data);
                             break;
@@ -136,7 +135,7 @@ int main() {
                         
                         case 2: {
                             int pos;
-                            cout << "Enter index to delete: ";
+                            cout << "Enter index you want delet: ";
                             cin >> pos;
                             list.deleteAtAny(pos);
                             break;
@@ -144,9 +143,9 @@ int main() {
 
                         case 3: {
                             int pos, val;
-                            cout << "Enter index to update: ";
+                            cout << "Enter index you want update: ";
                             cin >> pos;
-                            cout << "Enter new value: ";
+                            cout << "Enter a new value: ";
                             cin >> val;
                             list.update(pos, val);
                             break;
@@ -157,9 +156,9 @@ int main() {
                         case 5:
                             break;
                         default:
-                            cout << "Invalid Choice!" << endl;
+                            cout << "Error: Invalid Choice!" << endl;
                     }
-                } while (subChoice != 5);
+                } while (ch != 5);
                 break;
             }
 
@@ -170,12 +169,10 @@ int main() {
                 cin >> size;
                 vector<int> arr(size);
 
-
                 for (int i = 0; i < size; i++) {
                     cout << "Enter element " << i + 1 << ": ";
                     cin >> arr[i];
                 }
-
 
                 cout << "Before sort: ";
                 displayVector(arr);
@@ -191,7 +188,6 @@ int main() {
                 cin >> size;
                 vector<int> arr(size);
 
-
                 for (int i = 0; i < size; i++) {
                     cout << "Enter element " << i + 1 << ": ";
                     cin >> arr[i];
@@ -201,26 +197,24 @@ int main() {
                 cout << "Sorted array: ";
                 displayVector(arr);
 
-
                 cout << "Enter key to search: ";
                 cin >> key;
 
-
                 int index = binarySearch(arr, 0, size - 1, key);
                 if (index != -1) {
-                    cout << "Element found at index :" << index << endl;
+                    cout << "Element found at index: " << index << endl;
                 } else {
-                    cout << "Element not found!" << endl;
+                    cout << "Error: Element not found!" << endl;
                 }
                 break;
             }
 
             case 4:
-                cout << "Thank you!" << endl;
+                cout << "Thank you for using the program!" << endl;
                 break;
 
             default:
-                cout << "Invalid choice!" << endl;
+                cout << "Error: Invalid choice!" << endl;
         }
     } while (choice != 4);
 
